@@ -1,23 +1,33 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 
 interface IProps  {
   tip?: string,
-  state: Boolean
+  hidden?: Boolean
+  children: React.ReactNode | ((xOffset: number, yOffset: number) => React.ReactNode)
 }
 
 export const SVGTooltip: React.FC<IProps> = (props) => {
-  
-  let tooltipText = props.tip ? props.tip : "Enter text here"
-  const onClick = (text : string) => {
-      tooltipText = text
+  const [hidden, setHidden] = useState<Boolean>(true)
+  const [state, setState] = useState<IProps>()
+  const onClick = (hidden : Boolean) => {
+      showOrHide(hidden)
+  }
+
+  const showOrHide = (hidden : Boolean) => {
+    setHidden(hidden)
+    setState({tip: props.tip, hidden:hidden, children: props.children})
   }
 
   return (
-      <g>
-        <rect x={60} y={60} width={320} height={80} fill={"black"} />
-        <text x={120} y={80} fontSize={24} fill={"white"}>
-          <tspan x={70} dy="1em">{tooltipText}</tspan>
-        </text>
-      </g>
-    );
+      (hidden) ? 
+        <g onClick={() => onClick(false)}> {props.children instanceof Function ? props.children(0, 0) : props.children} </g>
+      :
+        <g onClick={() => onClick(true)}>
+          <rect x={60} y={60} width={320} height={80} fill={"black"} />
+          <text x={120} y={80} fontSize={24} fill={"white"}>
+            <tspan x={70} dy="1em">{(state && state.tip) ? state.tip : props.tip}</tspan>
+          </text>
+          {props.children instanceof Function ? props.children(0, 0) : props.children}
+        </g>
+    )
 }
