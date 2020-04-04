@@ -1,1 +1,1 @@
-export { default } from './ReactTooltipForSVG';
+export { SVGTooltip } from './ReactTooltipForSVG';
