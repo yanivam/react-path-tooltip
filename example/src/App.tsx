@@ -8,7 +8,7 @@ function App() {
     < div className="App" >
       < div className="Main">
         <svg width="200px" height="200px">
-          <SVGTooltip tip="Hello world" hidden={true}>
+          <SVGTooltip tip="Hello world" isClick={false}>
             <circle cx={50} cy={50} r={10} fill="red" />
           </SVGTooltip>
         </svg>
