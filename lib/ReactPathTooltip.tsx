@@ -6,7 +6,7 @@ interface IProps {
   children: React.ReactNode | ((xOffset: number, yOffset: number) => React.ReactNode)
 }
 
-export const SVGTooltip: React.FC<IProps> = (props) => {
+export const PathTooltip: React.FC<IProps> = (props) => {
   // set initial state
   const [hidden, setHidden] = useState<Boolean>(true)
 
@@ -36,6 +36,6 @@ export const SVGTooltip: React.FC<IProps> = (props) => {
 }
 
 // Set default value
-SVGTooltip.defaultProps = {
+PathTooltip.defaultProps = {
   trigger: "hover"
 } as Pick<IProps, "trigger">;

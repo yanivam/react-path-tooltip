@@ -1,6 +1,6 @@
 import React from "react"
 import "./App.css"
-import { SVGTooltip } from "./ReactTooltipForSVG" // import the package
+import { PathTooltip } from "../../lib" // import the package
 
 function App() {
 
@@ -8,9 +8,9 @@ function App() {
     < div className="App" >
       < div className="Main">
         <svg width="200px" height="200px">
-          <SVGTooltip tip="Hello world" >
+          <PathTooltip tip="Hello world" >
             <circle cx={50} cy={50} r={10} fill="red" />
-          </SVGTooltip>
+          </PathTooltip>
         </svg>
       </div>
     </div>

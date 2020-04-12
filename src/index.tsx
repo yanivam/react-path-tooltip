@@ -1,1 +1,0 @@
-export { SVGTooltip } from './ReactTooltipForSVG';
