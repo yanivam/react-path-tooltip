@@ -1,6 +1,6 @@
 import React from "react"
 import "./App.css"
-import { PathTooltip } from "../../lib" // import the package
+import { PathTooltip } from "react-path-tooltip" // import the package
 
 function App() {
 
