@@ -8,7 +8,7 @@ interface IProps {
 
 export const PathTooltip: React.FC<IProps> = (props) => {
   // set initial state
-  const [hidden, setHidden] = useState<Boolean>(true)
+  const [hidden, setHidden] = useState(true)
 
   // define trigger
   const toggleTooltip = () => {
