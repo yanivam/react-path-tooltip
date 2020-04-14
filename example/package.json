@@ -32,6 +32,6 @@
     ]
   },
   "dependencies": {
-    "react-path-tooltip": "file:.."
+    "react-path-tooltip": "file:../react-path-tooltip-1.0.0.tgz"
   }
 }
