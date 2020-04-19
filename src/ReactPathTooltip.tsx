@@ -43,4 +43,4 @@ export const PathTooltip: React.FC<IProps> = (props) => {
 // Set default value
 PathTooltip.defaultProps = {
   trigger: "hover"
-} as Pick<IProps, "trigger">;
+} as Pick<IProps, "trigger">

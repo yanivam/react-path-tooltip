@@ -1,1 +1,1 @@
-export { PathTooltip } from './ReactPathTooltip';
+export { PathTooltip } from './ReactPathTooltip'
