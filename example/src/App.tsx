@@ -15,7 +15,7 @@ function App() {
         <svg width="200px" height="400px" ref={svgRef}>
           
           <circle cx={50} cy={50} r={10} fill="red" ref={circleRedRef} />
-          <PathTooltip svgRef={svgRef} pathRef={circleRef} tip="Hello world" />
+          <PathTooltip svgRef={svgRef} pathRef={circleRedRef} tip="Hello world" />
           
           <circle cx={150} cy={200} r={20} fill="green" ref={circleGreenRef} />
           <PathTooltip svgRef={svgRef} pathRef={circleGreenRef} tip="Hmmmmmmm" />
