@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 interface IProps {
-  tip?: string,
+  tip: string,
   pathRef: React.RefObject<SVGElement>
   svgRef: React.RefObject<SVGSVGElement>
 }
@@ -9,35 +9,45 @@ interface IProps {
 export const PathTooltip: React.FC<IProps> = (props) => {
   // set initial state
   const [hidden, setHidden] = useState(true)
+  const [tooltipLocation, settooltipLocation] = useState({ x: 0, y: 0, w:0, h:0 })
   const fontSize = 12
-  const tooltipWidth = (props.tip) ? fontSize * props.tip.length : 0
-  const pathComponent = props.pathRef
-  const svgComponent = props.svgRef
-  const [popupOffset, setPopupOffset] = useState({ x: 0, y: 0 })
+  const tooltipWidth = fontSize * props.tip.length
+  const pathRef = props.pathRef
+  const svgRef = props.svgRef
 
   useEffect(() => {
-    const calcPosition = () => {
-      if(svgComponent && pathComponent && svgComponent.current && pathComponent.current) {
-        const svgWidth = svgComponent.current.width.baseVal.value || 0
-        const pathXOffset = pathComponent.current.getBoundingClientRect().x || 0
-        const svgXOffset = svgComponent.current.getBoundingClientRect().x || 0
+    const calcLocation = () => {
+      if(svgRef && pathRef && svgRef.current && pathRef.current) {
+        const svgRect = svgRef.current.getBoundingClientRect()
+        const pathRect = pathRef.current.getBoundingClientRect()
 
-        const isLeft = ((pathXOffset - svgXOffset) > (svgWidth / 2))
-        setPopupOffset({ x: (isLeft) ? pathXOffset - svgXOffset - tooltipWidth : pathXOffset - svgXOffset + 10, y: (pathComponent.current.getBoundingClientRect().y || 0) + 10 })
+        const isLeft = ((pathRect.x - svgRect.x) > (svgRect.width / 2))
+        const isTop = ((pathRect.y - svgRect.y) > (svgRect.height / 2))
+
+        const w = tooltipWidth + 20
+        const h = fontSize + 20
+        const x = (isLeft) ? pathRect.x - svgRect.x + pathRect.height/2 - 5 - w : pathRect.x - svgRect.x + pathRect.width/2 + 5
+        const y = (isTop) ? pathRect.y - svgRect.y + pathRect.height/2 - 5 - h : pathRect.y - svgRect.y + pathRect.height/2 + 5
+        console.log("svg",svgRect)
+        console.log("path",pathRect)
+        console.log("text",tooltipWidth)
+        console.log("left",isLeft,"top",isTop)
+        console.log("x",x,"y",y)
+        settooltipLocation({ x: x, y: y, w: w, h: h })
       }
     }
-    if (pathComponent && pathComponent.current) {
-      pathComponent.current.addEventListener('mouseover', () => {setHidden(false); calcPosition()})
-      pathComponent.current.addEventListener('mouseleave', () => { setHidden(true) })
+    if (pathRef && pathRef.current) {
+      pathRef.current.addEventListener('mouseover', () => {setHidden(false); calcLocation()})
+      pathRef.current.addEventListener('mouseleave', () => { setHidden(true) })
     }
-  }, [pathComponent, svgComponent, tooltipWidth])
+  }, [pathRef, svgRef, tooltipWidth])
 
   // render everything
   return (
     <g>
-      <rect x={popupOffset.x + 10} y={popupOffset.y + 10} width={tooltipWidth} height={40} fill={"black"} visibility={(hidden ? "hidden" : "visible")} />
-      <text x={popupOffset.x} y={popupOffset.y + 10} fontSize={fontSize} fill={"white"} visibility={(hidden ? "hidden" : "visible")}>
-        <tspan x={popupOffset.x + tooltipWidth / 4} dy="1em">{props.tip ? props.tip : "Enter text here"}</tspan>
+      <rect x={tooltipLocation.x} y={tooltipLocation.y} width={tooltipLocation.w} height={tooltipLocation.h} fill={"black"} visibility={(hidden ? "hidden" : "visible")} />
+      <text x={tooltipLocation.x + 10} y={tooltipLocation.y + 20} fontSize={fontSize} fill={"white"} visibility={(hidden ? "hidden" : "visible")}>
+        {props.tip}
       </text>
     </g>
   )

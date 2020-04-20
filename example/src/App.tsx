@@ -4,24 +4,28 @@ import { PathTooltip } from "./ReactPathTooltip" // import the package
 
 function App() {
 
-  const svgRef=React.createRef<SVGSVGElement>()
-  const circleRedRef=React.createRef<SVGCircleElement>()
-  const circleGreenRef=React.createRef<SVGCircleElement>()
-  const circleBlueRef=React.createRef<SVGCircleElement>()
+  const svgRef = React.createRef<SVGSVGElement>()
+  const redRef = React.createRef<SVGCircleElement>()
+  const greenRef = React.createRef<SVGCircleElement>()
+  const blueRef = React.createRef<SVGCircleElement>()
+  const purpleRef = React.createRef<SVGRectElement>()
 
   return (
     < div className="App" >
+      <h1>The SVG</h1>
       < div className="Main">
-        <svg width="200px" height="400px" ref={svgRef}>
-          
-          <circle cx={50} cy={50} r={10} fill="red" ref={circleRedRef} />
-          <PathTooltip svgRef={svgRef} pathRef={circleRedRef} tip="Hello world" />
-          
-          <circle cx={150} cy={200} r={20} fill="green" ref={circleGreenRef} />
-          <PathTooltip svgRef={svgRef} pathRef={circleGreenRef} tip="Hmmmmmmm" />
-          
-          <circle cx={101} cy={101} r={30} fill="blue" ref={circleBlueRef} />
-          <PathTooltip svgRef={svgRef} pathRef={circleBlueRef} tip="HW" />
+        <svg width="400" height="400" ref={svgRef}>
+          <rect width="400" height="400" stroke="black" fill="none"/>
+
+          <circle cx={50} cy={50} r={50} fill="red" ref={redRef} />
+          <circle cx={80} cy={80} r={50} fill="green" ref={greenRef} />
+          <circle cx={350} cy={350} r={30} fill="blue" ref={blueRef} />
+          <rect x={320} y={50} width="50" height="50" fill="purple" ref={purpleRef}/>
+
+          <PathTooltip svgRef={svgRef} pathRef={redRef} tip="This is the long Red!" />
+          <PathTooltip svgRef={svgRef} pathRef={greenRef} tip="Green" />
+          <PathTooltip svgRef={svgRef} pathRef={blueRef} tip="BL" />
+          <PathTooltip svgRef={svgRef} pathRef={purpleRef} tip="Purple" />
 
         </svg>
       </div>
