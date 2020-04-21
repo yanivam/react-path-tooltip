@@ -28,11 +28,7 @@ export const PathTooltip: React.FC<IProps> = (props) => {
         const h = fontSize + 20
         const x = (isLeft) ? pathRect.x - svgRect.x + pathRect.height/2 - 5 - w : pathRect.x - svgRect.x + pathRect.width/2 + 5
         const y = (isTop) ? pathRect.y - svgRect.y + pathRect.height/2 - 5 - h : pathRect.y - svgRect.y + pathRect.height/2 + 5
-        console.log("svg",svgRect)
-        console.log("path",pathRect)
-        console.log("text",tooltipWidth)
-        console.log("left",isLeft,"top",isTop)
-        console.log("x",x,"y",y)
+
         settooltipLocation({ x: x, y: y, w: w, h: h })
       }
     }
@@ -45,8 +41,8 @@ export const PathTooltip: React.FC<IProps> = (props) => {
   // render everything
   return (
     <g>
-      <rect x={tooltipLocation.x} y={tooltipLocation.y} width={tooltipLocation.w} height={tooltipLocation.h} fill={"black"} visibility={(hidden ? "hidden" : "visible")} />
-      <text x={tooltipLocation.x + 10} y={tooltipLocation.y + 20} fontSize={fontSize} fill={"white"} visibility={(hidden ? "hidden" : "visible")}>
+      <rect x={tooltipLocation.x} y={tooltipLocation.y} width={tooltipLocation.w} rx={10} ry={10} height={tooltipLocation.h} fill={"white"} stroke={"black"} visibility={(hidden ? "hidden" : "visible")} />
+      <text x={tooltipLocation.x + 10} cursor={"default"} y={tooltipLocation.y + 20} fontSize={fontSize} fill={"black"} visibility={(hidden ? "hidden" : "visible")}>
         {props.tip}
       </text>
     </g>
