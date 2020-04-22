@@ -41,7 +41,7 @@ export default App
 ~~~
 
 ## Customization
-The following mandatory and optional parameters are passed to the tooltip component:
+The following parameters are passed to the tooltip component:
 
 | Prop             | Type   | Description |
 | ---------------- | ------ | ----------- |
