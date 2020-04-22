@@ -14,18 +14,20 @@ export const PathTooltip: React.FC<IProps> = (props) => {
   const tooltipWidth = fontSize * props.tip.length
   const pathRef = props.pathRef
   const svgRef = props.svgRef
+  const textRef = React.createRef<SVGTextElement>()
 
   useEffect(() => {
-    const calcLocation = () => {
-      if(svgRef && pathRef && svgRef.current && pathRef.current) {
+    const calcTooltipRect = () => {
+      if(svgRef && pathRef && textRef && svgRef.current && pathRef.current && textRef.current) {
         const svgRect = svgRef.current.getBoundingClientRect()
         const pathRect = pathRef.current.getBoundingClientRect()
+        const textRect = textRef.current.getBoundingClientRect()
 
          const isLeft = ((pathRect.x - svgRect.x) > (svgRect.width / 2))
          const isTop = ((pathRect.y - svgRect.y) > (svgRect.height / 2))
 
-        const w = tooltipWidth + 10
-        const h = fontSize + 20
+        const w = textRect.width + 20
+        const h = textRect.height + 20
         const x = (isLeft) ? pathRect.x - svgRect.x + pathRect.height/2 - 7 - w : pathRect.x - svgRect.x + pathRect.width/2 + 7
         const y = (isTop) ? pathRect.y - svgRect.y + pathRect.height/2 - 7 - h : pathRect.y - svgRect.y + pathRect.height/2 + 7
 
@@ -33,10 +35,10 @@ export const PathTooltip: React.FC<IProps> = (props) => {
       }
     }
     if (pathRef && pathRef.current) {
-      pathRef.current.addEventListener('mouseover', () => {calcLocation(); setHidden(false)})
+      pathRef.current.addEventListener('mouseover', () => {calcTooltipRect(); setHidden(false)})
       pathRef.current.addEventListener('mouseleave', () => { setHidden(true) })
     }
-  }, [pathRef, svgRef, tooltipWidth])
+  }, [pathRef, svgRef, tooltipWidth, textRef])
 
   const bottomRight = (tooltipRect.x + 7).toString() + "," + (tooltipRect.y - 10).toString() + " " + (tooltipRect.x + 15).toString() + "," + tooltipRect.y.toString() + " " + (tooltipRect.x + 7).toString() + "," + tooltipRect.y.toString()
   const bottomLeft = (tooltipRect.x + tooltipRect.w - 7).toString() + "," + (tooltipRect.y - 10).toString() + " " + (tooltipRect.x + tooltipRect.w - 15).toString() + "," + tooltipRect.y.toString() + " " + (tooltipRect.x + tooltipRect.w - 7).toString() + "," + tooltipRect.y.toString()
@@ -49,7 +51,7 @@ export const PathTooltip: React.FC<IProps> = (props) => {
     <g pointerEvents={"none"} >
       <rect x={tooltipRect.x} y={tooltipRect.y} width={tooltipRect.w} rx={5} ry={5} height={tooltipRect.h} fill={"black"} stroke={"black"} visibility={(hidden ? "hidden" : "visible")} />
       <polygon fill={"black"} stroke={"black"} visibility={(hidden ? "hidden" : "visible")} points={points} />
-      <text x={tooltipRect.x + 10} cursor={"default"} y={tooltipRect.y + 20} fontSize={fontSize} fill={"white"} visibility={(hidden ? "hidden" : "visible")}>
+      <text ref={textRef} x={tooltipRect.x + 10} cursor={"default"} y={tooltipRect.y + 20} fontSize={fontSize} fill={"white"} visibility={(hidden ? "hidden" : "visible")}>
         {props.tip}
       </text>
     </g>
