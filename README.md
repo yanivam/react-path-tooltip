@@ -49,7 +49,8 @@ The following parameters are passed to the tooltip component:
 | svgRef           | React.RefObject<SVGElement> | Mandatory. A React reference object to the SVG element |
 | pathRef          | React.RefObject<SVGSVGElement> | Mandatory. A React reference object to the path element bounded to the tooltip |
 
-Note: 
+**Notes:**
+
 * `tip` must include simple text. No new lines, or html decoration. 
 * `pathRef` must be a valid reference to a path element. There are a number of such types such as SVGRectElement, SVGCircleElement, etc. 
 * The SVG rendering should be such that all the tooltip elelments are at the bottom of the SVG definition, and specifically, after the path elements. Otherwise, there is a risk of paths overlaping tooltips. 
