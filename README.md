@@ -30,7 +30,7 @@ function App() {
       < div className="Main">
         <svg width="400" height="400" ref={svgRef}>
           <circle cx={50} cy={50} r={50} fill="red" ref={pathRef} />
-          <PathTooltip svgRef={svgRef} pathRef={redRef} tip="Hello Workd!" />
+          <PathTooltip svgRef={svgRef} pathRef={pathRef} tip="Hello World!" />
         </svg>
       </div>
     </div>
