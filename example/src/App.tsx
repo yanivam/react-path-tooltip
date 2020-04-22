@@ -9,6 +9,7 @@ function App() {
   const greenRef = React.createRef<SVGCircleElement>()
   const blueRef = React.createRef<SVGCircleElement>()
   const purpleRef = React.createRef<SVGRectElement>()
+  const greyRef = React.createRef<SVGCircleElement>()
 
   return (
     < div className="App" >
@@ -21,11 +22,13 @@ function App() {
           <circle cx={80} cy={80} r={50} fill="green" ref={greenRef} />
           <circle cx={350} cy={350} r={30} fill="blue" ref={blueRef} />
           <rect x={320} y={50} width="50" height="50" fill="purple" ref={purpleRef}/>
+          <circle cx={50} cy={320} r={10} fill="grey" ref={greyRef} />
 
           <PathTooltip svgRef={svgRef} pathRef={redRef} tip="This is the long Red!" />
           <PathTooltip svgRef={svgRef} pathRef={greenRef} tip="Green" />
           <PathTooltip svgRef={svgRef} pathRef={blueRef} tip="BL" />
           <PathTooltip svgRef={svgRef} pathRef={purpleRef} tip="Purple" />
+          <PathTooltip svgRef={svgRef} pathRef={greyRef} tip="Grey" />
 
         </svg>
       </div>
