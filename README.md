@@ -46,8 +46,8 @@ The following parameters are passed to the tooltip component:
 | Prop             | Type   | Description |
 | ---------------- | ------ | ----------- |
 | tip              | string                      | Mandatory. The text to be displayed inside the tooltip |
-| svgRef           | React.RefObject<SVGElement> | Mandatory. A React reference object for the SVG element containing the path |
-| pathRef          | React.RefObject<SVGSVGElement> | Mandatory. A React reference object for the path that will bounded for this tooltip |
+| svgRef           | React.RefObject<SVGElement> | Mandatory. A React reference object to the SVG element |
+| pathRef          | React.RefObject<SVGSVGElement> | Mandatory. A React reference object to the path element bounded to the tooltip |
 
 Note: 
 * `tip` must include simple text. No new lines, or html decoration. 
