@@ -1,6 +1,6 @@
 # React Path Tooltop
 
-A simple yet beautiful react component to assign tooltips for SVG Paths.
+A simple yet beautiful react component to bound tooltips to Path elements within an SVG.
 The components detects the SVG and Path sizes as well as calculated the display text width of the tooltip and render the tool tip oriented accordingly. 
 
 **Note:** When generating SVG with multiple paths, make sure to add the tooltips at the bottom of the SVG element, after all the paths are already displays. 
