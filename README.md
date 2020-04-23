@@ -1,5 +1,5 @@
 # React Path Tooltop
-A simple yet beautiful react component to bound text based tooltips to SVG-Path elements.
+A simple yet beautiful react tooltip component for SVG-Paths.
 The component detects the SVG and Path locations/sizes. The component also detects the display text width of the tooltip. Based on that information a calculation is done so that the rendering of the tooltip will be optimized and correctly oriented.  
 
 **Note:** When generating SVG with multiple paths, make sure to add the tooltips at the bottom of the SVG element, after all the paths are already displays. 
@@ -43,15 +43,15 @@ export default App
 ## Customization
 The following parameters are passed to the tooltip component:
 
-| Prop             | Type   | Description |
-| ---------------- | ------ | ----------- |
-| tip              | string                      | Mandatory. The text to be displayed inside the tooltip |
-| svgRef           | React.RefObject<SVGElement> | Mandatory. A React reference object to the SVG element |
-| pathRef          | React.RefObject<SVGSVGElement> | Mandatory. A React reference object to the path element bounded to the tooltip |
-| bg-color         | string | Optional. Background color. Default: "black" |
-| text-color       | string | Optional. Text color. Default: "white" |
-| font-family      | string | Optional. The font family. Default: san-serif |
-| font-size        | number | Optional. The font size. Default 12| 
+| Prop       | Type   | Description |
+| ---------- | ------ | ----------- |
+| tip        | string | Mandatory. The text to be displayed inside the tooltip |
+| svgRef     | React.RefObject<SVGElement> | Mandatory. A React reference object to the SVG element |
+| pathRef    | React.RefObject<SVGSVGElement> | Mandatory. A React reference object to the path element bounded to the tooltip |
+| bgColor    | string | Optional. Background color. Default: "black" |
+| textColor  | string | Optional. Text color. Default: "white" |
+| fontFamily | string | Optional. The font family. Default: san-serif |
+| fontSize   | number | Optional. The font size. Default 12| 
 
 **Notes:**
 
