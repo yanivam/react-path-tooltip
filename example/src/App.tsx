@@ -26,9 +26,9 @@ function App() {
 
           <PathTooltip svgRef={svgRef} pathRef={redRef} tip="This is the long Red!" />
           <PathTooltip svgRef={svgRef} pathRef={greenRef} tip="Green" />
-          <PathTooltip svgRef={svgRef} pathRef={blueRef} tip="BL" />
-          <PathTooltip svgRef={svgRef} pathRef={purpleRef} tip="Purple" />
-          <PathTooltip svgRef={svgRef} pathRef={greyRef} tip="Grey" />
+          <PathTooltip svgRef={svgRef} pathRef={blueRef} tip="BL" fontFamily={"system-ui"}/>
+          <PathTooltip svgRef={svgRef} pathRef={purpleRef} tip="Purple" fontSize={24}/>
+          <PathTooltip svgRef={svgRef} pathRef={greyRef} tip="Grey" bgColor="gray" textColor="blue"/>
 
         </svg>
       </div>

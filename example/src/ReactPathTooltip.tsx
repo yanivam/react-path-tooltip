@@ -2,20 +2,28 @@ import React, { useState, useEffect } from 'react'
 
 interface IProps {
   tip: string,
-  pathRef: React.RefObject<SVGElement>
-  svgRef: React.RefObject<SVGSVGElement>
+  pathRef: React.RefObject<SVGElement>,
+  svgRef: React.RefObject<SVGSVGElement>,
+  minWidth?: number,
+  fontSize?: number,
+  fontFamily?: string,
+  bgColor?: string,
+  textColor?: string
 }
 
 export const PathTooltip: React.FC<IProps> = (props) => {
   // set initial state
   const [hidden, setHidden] = useState(true)
   const [tooltipRect, setTooltipRect] = useState({ x: 0, y: 0, w:0, h:0, isLeft: false, isTop: false })
-  const fontSize = 12
-  const tooltipWidth = fontSize * props.tip.length
+  const [fontSize, ] = useState (props["fontSize"] || 12)
+  const [fontFamily, ] = useState (props["fontFamily"] || "sans-serif")
+  const [bgColor, ] = useState (props["bgColor"] || "black")
+  const [textColor, ] = useState (props["textColor"] || "white")
   const pathRef = props.pathRef
   const svgRef = props.svgRef
   const textRef = React.createRef<SVGTextElement>()
 
+  // use effect to handle mouse over and mouse leave
   useEffect(() => {
     const calcTooltipRect = () => {
       if(svgRef && pathRef && textRef && svgRef.current && pathRef.current && textRef.current) {
@@ -38,8 +46,9 @@ export const PathTooltip: React.FC<IProps> = (props) => {
       pathRef.current.addEventListener('mouseover', () => {calcTooltipRect(); setHidden(false)})
       pathRef.current.addEventListener('mouseleave', () => { setHidden(true) })
     }
-  }, [pathRef, svgRef, tooltipWidth, textRef])
+  }, [pathRef, svgRef, textRef])
 
+  // build up tip of tooltip
   const bottomRight = (tooltipRect.x + 7).toString() + "," + (tooltipRect.y - 10).toString() + " " + (tooltipRect.x + 15).toString() + "," + tooltipRect.y.toString() + " " + (tooltipRect.x + 7).toString() + "," + tooltipRect.y.toString()
   const bottomLeft = (tooltipRect.x + tooltipRect.w - 7).toString() + "," + (tooltipRect.y - 10).toString() + " " + (tooltipRect.x + tooltipRect.w - 15).toString() + "," + tooltipRect.y.toString() + " " + (tooltipRect.x + tooltipRect.w - 7).toString() + "," + tooltipRect.y.toString()
   const topRight = (tooltipRect.x + 7).toString() + "," + (tooltipRect.y + tooltipRect.h + 10).toString() + " " + (tooltipRect.x + 15).toString() + "," + (tooltipRect.y + tooltipRect.h).toString() + " " + (tooltipRect.x + 7).toString() + "," + (tooltipRect.y +tooltipRect.h).toString()
@@ -49,9 +58,9 @@ export const PathTooltip: React.FC<IProps> = (props) => {
   // render everything
   return (
     <g pointerEvents={"none"} >
-      <rect x={tooltipRect.x} y={tooltipRect.y} width={tooltipRect.w} rx={5} ry={5} height={tooltipRect.h} fill={"black"} stroke={"black"} visibility={(hidden ? "hidden" : "visible")} />
-      <polygon fill={"black"} stroke={"black"} visibility={(hidden ? "hidden" : "visible")} points={points} />
-      <text ref={textRef} x={tooltipRect.x + 10} cursor={"default"} y={tooltipRect.y + 20} fontSize={fontSize} fill={"white"} visibility={(hidden ? "hidden" : "visible")}>
+      <rect x={tooltipRect.x} y={tooltipRect.y} width={tooltipRect.w} rx={5} ry={5} height={tooltipRect.h} fill={bgColor} visibility={(hidden ? "hidden" : "visible")} />
+      <polygon fill={bgColor} visibility={(hidden ? "hidden" : "visible")} points={points} />
+      <text ref={textRef} x={tooltipRect.x + 10} cursor={"default"} y={tooltipRect.y + tooltipRect.h/1.66} fontFamily={fontFamily} fontSize={fontSize} fill={textColor} visibility={(hidden ? "hidden" : "visible")}>
         {props.tip}
       </text>
     </g>
