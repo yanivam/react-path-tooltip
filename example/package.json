@@ -1,7 +1,6 @@
 {
   "name": "my-app",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -12,6 +11,7 @@
     "@types/react-dom": "^16.9.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-path-tooltip": "^1.0.1",
     "react-scripts": "3.4.1",
     "typescript": "^3.7.5"
   },
