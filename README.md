@@ -4,6 +4,10 @@ The component detects the SVG and Path locations/sizes. The component also detec
 
 **Note:** When generating SVG with multiple paths, make sure to add the tooltips at the bottom of the SVG element, after all the paths are already displays. 
 
+## Demo
+
+Click [here](https://react-path-tooltip-simple-example.imfast.io) for live demo.
+
 ## Install 
 
 In order to install, run the following command:
@@ -58,7 +62,6 @@ The following parameters are passed to the tooltip component:
 * `tip` must include simple text. No new lines, or html decoration. 
 * `pathRef` must be a valid reference to a path element. There are a number of such types such as SVGRectElement, SVGCircleElement, etc. 
 * The SVG rendering should be such that all the tooltip elelments are at the bottom of the SVG definition, and specifically, after the path elements. Otherwise, there is a risk of paths overlaping tooltips. 
-
 
 ## License
 MIT
