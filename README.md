@@ -15,7 +15,7 @@ $ npm install react-path-tooltip --save
 ## Usage 
 A very simple `App.tsx' example: 
 
-~~~
+```tsx
 import React from "react"
 import "./App.css"
 import { PathTooltip } from "ReactPathTooltip" // import the package
@@ -38,7 +38,7 @@ function App() {
 }
 
 export default App
-~~~
+```
 
 ## Customization
 The following parameters are passed to the tooltip component:
