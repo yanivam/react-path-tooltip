@@ -1,4 +1,4 @@
-# React Path Tooltop
+# react-path-tooltop [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 A simple yet beautiful react tooltip component for SVG-Paths.
 The component detects the SVG and Path locations/sizes. The component also detects the display text width of the tooltip. Based on that information a calculation is done so that the rendering of the tooltip will be optimized and correctly oriented.  
 
