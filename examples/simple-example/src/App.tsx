@@ -10,6 +10,7 @@ function App() {
   const blueRef = React.createRef<SVGCircleElement>()
   const purpleRef = React.createRef<SVGRectElement>()
   const greyRef = React.createRef<SVGCircleElement>()
+  const pinkRef = React.createRef<SVGCircleElement>()
 
   return (
     < div className="App" >
@@ -23,12 +24,14 @@ function App() {
           <circle cx={350} cy={350} r={30} fill="blue" ref={blueRef} />
           <rect x={320} y={50} width="50" height="50" fill="purple" ref={purpleRef}/>
           <circle cx={50} cy={320} r={10} fill="grey" ref={greyRef} />
+          <circle cx={190} cy={190} r={40} fill="pink" ref={pinkRef} />
 
           <PathTooltip svgRef={svgRef} pathRef={redRef} tip="This is the long Red!" />
           <PathTooltip svgRef={svgRef} pathRef={greenRef} tip="Green" />
           <PathTooltip svgRef={svgRef} pathRef={blueRef} tip="BL" fontFamily={"system-ui"}/>
           <PathTooltip svgRef={svgRef} pathRef={purpleRef} tip="Purple" fontSize={24}/>
-          <PathTooltip svgRef={svgRef} pathRef={greyRef} tip="Grey" bgColor="gray" textColor="blue"/>
+          <PathTooltip svgRef={svgRef} pathRef={greyRef} tip="Grey" bgColor="#909090" textColor="blue"/>
+          <PathTooltip svgRef={svgRef} pathRef={pinkRef} tip="Pink" textColor="pink"/>
 
         </svg>
       </div>
@@ -37,3 +40,4 @@ function App() {
 }
 
 export default App
+// <svg width="400" height="400" ref={svgRef} viewBox={"0 0 960 960"}>
