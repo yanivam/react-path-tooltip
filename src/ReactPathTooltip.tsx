@@ -12,6 +12,7 @@ interface IProps {
 }
 
 export const PathTooltip: React.FC<IProps> = (props) => {
+
   // set initial state
   const [hidden, setHidden] = useState(true)
   const [tooltipRect, setTooltipRect] = useState({ x: 0, y: 0, w:0, h:0, isLeft: false, isTop: false })
@@ -25,32 +26,34 @@ export const PathTooltip: React.FC<IProps> = (props) => {
 
   // use effect to handle mouse over and mouse leave
   useEffect(() => {
-    const calcTooltipRect = () => {
+
+    const updateTooltip = (e:MouseEvent) => {
       if(svgRef && pathRef && textRef && svgRef.current && pathRef.current && textRef.current) {
         const svgRect = svgRef.current.getBoundingClientRect()
-        const pathRect = pathRef.current.getBoundingClientRect()
         const textRect = textRef.current.getBoundingClientRect()
 
-         const isLeft = ((pathRect.x - svgRect.x) > (svgRect.width / 2))
-         const isTop = ((pathRect.y - svgRect.y) > (svgRect.height / 2))
+         const isLeft = ((e.x - svgRect.x) > (svgRect.width / 2))
+         const isTop = ((e.y - svgRect.y) > (svgRect.height / 2))
 
         const w = textRect.width + 20
         const h = textRect.height + 20
-        const x = (isLeft) ? pathRect.x - svgRect.x + pathRect.height/2 - 7 - w : pathRect.x - svgRect.x + pathRect.width/2 + 7
-        const y = (isTop) ? pathRect.y - svgRect.y + pathRect.height/2 - 7 - h : pathRect.y - svgRect.y + pathRect.height/2 + 7
+        const x = (isLeft) ? e.x - svgRect.x + 8 - w : e.x - svgRect.x - 8
+        const y = (isTop) ? e.y - svgRect.y - 12 - h : e.y - svgRect.y + 8
 
         setTooltipRect({ x: x, y: y, w: w, h: h, isLeft: isLeft, isTop: isTop })
       }
     }
+
     if (pathRef && pathRef.current) {
-      pathRef.current.addEventListener('mouseover', () => {calcTooltipRect(); setHidden(false)})
+      pathRef.current.addEventListener('mouseover', () => { setHidden(false) })
       pathRef.current.addEventListener('mouseleave', () => { setHidden(true) })
+      pathRef.current.addEventListener('mousemove', (e) => { if (!hidden) updateTooltip(e) })
     }
   }, [pathRef, svgRef, textRef])
 
   // build up tip of tooltip
-  const bottomRight = (tooltipRect.x + 7).toString() + "," + (tooltipRect.y - 10).toString() + " " + (tooltipRect.x + 15).toString() + "," + tooltipRect.y.toString() + " " + (tooltipRect.x + 7).toString() + "," + tooltipRect.y.toString()
-  const bottomLeft = (tooltipRect.x + tooltipRect.w - 7).toString() + "," + (tooltipRect.y - 10).toString() + " " + (tooltipRect.x + tooltipRect.w - 15).toString() + "," + tooltipRect.y.toString() + " " + (tooltipRect.x + tooltipRect.w - 7).toString() + "," + tooltipRect.y.toString()
+  const bottomRight = (tooltipRect.x + 7).toString() + "," + (tooltipRect.y - 10).toString() + " " + (tooltipRect.x + 30).toString() + "," + tooltipRect.y.toString() + " " + (tooltipRect.x + 22).toString() + "," + tooltipRect.y.toString()
+  const bottomLeft = (tooltipRect.x + tooltipRect.w - 8).toString() + "," + (tooltipRect.y - 10).toString() + " " + (tooltipRect.x + tooltipRect.w - 25).toString() + "," + tooltipRect.y.toString() + " " + (tooltipRect.x + tooltipRect.w - 15).toString() + "," + tooltipRect.y.toString()
   const topRight = (tooltipRect.x + 7).toString() + "," + (tooltipRect.y + tooltipRect.h + 10).toString() + " " + (tooltipRect.x + 15).toString() + "," + (tooltipRect.y + tooltipRect.h).toString() + " " + (tooltipRect.x + 7).toString() + "," + (tooltipRect.y +tooltipRect.h).toString()
   const topLeft = (tooltipRect.x + tooltipRect.w - 7).toString() + "," + (tooltipRect.y + tooltipRect.h + 10).toString() + " " + (tooltipRect.x + tooltipRect.w - 15).toString() + "," + (tooltipRect.y +tooltipRect.h).toString() + " " + (tooltipRect.x + tooltipRect.w - 7).toString() + "," + (tooltipRect.y + tooltipRect.h).toString()
   const points = (tooltipRect.isLeft && tooltipRect.isTop) ? topLeft : (tooltipRect.isTop) ? topRight : (tooltipRect.isLeft) ? bottomLeft : bottomRight 
