@@ -1,6 +1,6 @@
 {
     "name": "react-path-tooltip",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "license": "MIT",
     "displayName": "React Path Tooltip",
     "description": "A tooltip for SVG paths in React",
