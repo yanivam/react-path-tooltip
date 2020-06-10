@@ -49,7 +49,7 @@ export const PathTooltip: React.FC<IProps> = (props) => {
       pathRef.current.addEventListener('mouseleave', () => { setHidden(true) })
       pathRef.current.addEventListener('mousemove', (e) => { if (!hidden) updateTooltip(e) })
     }
-  }, [pathRef, svgRef, textRef])
+  }, [pathRef, svgRef, textRef, hidden])
 
   // build up tip of tooltip
   const bottomRight = (tooltipRect.x + 7).toString() + "," + (tooltipRect.y - 10).toString() + " " + (tooltipRect.x + 30).toString() + "," + tooltipRect.y.toString() + " " + (tooltipRect.x + 22).toString() + "," + tooltipRect.y.toString()
