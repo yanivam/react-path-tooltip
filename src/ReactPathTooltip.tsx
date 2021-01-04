@@ -58,14 +58,41 @@ export const PathTooltip: React.FC<IProps> = (props) => {
   const topLeft = (tooltipRect.x + tooltipRect.w - 7).toString() + "," + (tooltipRect.y + tooltipRect.h + 10).toString() + " " + (tooltipRect.x + tooltipRect.w - 15).toString() + "," + (tooltipRect.y +tooltipRect.h).toString() + " " + (tooltipRect.x + tooltipRect.w - 7).toString() + "," + (tooltipRect.y + tooltipRect.h).toString()
   const points = (tooltipRect.isLeft && tooltipRect.isTop) ? topLeft : (tooltipRect.isTop) ? topRight : (tooltipRect.isLeft) ? bottomLeft : bottomRight 
 
+  //Add multiline compatability
+  const findSpaceBeforeThreshold = (inputString: string, threshold: number) => {
+    var i = 0
+    var temp = -1
+    if(inputString.length <= threshold) { return ["", inputString]}
+    while(i <= inputString.length && i <= threshold) {
+      if(inputString[i] === " ") {
+        temp = i
+      }
+      i++
+    }
+    return [inputString.slice(0, temp), inputString.slice(temp + 1)]
+  }
+  const tips :string[]=[]
+  const startTip = findSpaceBeforeThreshold(props.tip, 35 - (1 * fontSize - 11))
+  tips.push(startTip[0])
+  var interimTip = startTip[1] 
+  var leftover = startTip[1]
+  while(interimTip !== "") {
+    const currTip = findSpaceBeforeThreshold(interimTip === leftover ? interimTip : leftover, 35 - (1 * fontSize - 11))
+    interimTip = currTip[0]
+    leftover = currTip[1]
+    tips.push(interimTip === "" ? currTip[1]: currTip[0])
+  }
+
   // render everything
   return (
-    <g pointerEvents={"none"} >
+    <g pointerEvents={"none"}>
       <rect x={tooltipRect.x} y={tooltipRect.y} width={tooltipRect.w} rx={5} ry={5} height={tooltipRect.h} fill={bgColor} visibility={(hidden ? "hidden" : "visible")} />
       <polygon fill={bgColor} visibility={(hidden ? "hidden" : "visible")} points={points} />
-      <text ref={textRef} x={tooltipRect.x + 10} cursor={"default"} y={tooltipRect.y + tooltipRect.h/1.66} fontFamily={fontFamily} fontSize={fontSize} fill={textColor} visibility={(hidden ? "hidden" : "visible")}>
-        {props.tip}
-      </text>
+        <text ref={textRef} x={tooltipRect.x + 10} cursor={"default"} y={tooltipRect.y} fontFamily={fontFamily} fontSize={fontSize} fill={textColor} visibility={(hidden ? "hidden" : "visible")}>
+            {props.tip.length > 35 - (1*(fontSize - 11)) ? tips.map((tip, index)=> {
+              return <tspan key={tip} x={tooltipRect.x+ 10} y={tooltipRect.y + (20 + (1 * fontSize - 11)) + (20 * (index))}>{tip}</tspan>
+            }): <tspan x={tooltipRect.x+ 10} y={tooltipRect.y + (20 + (1 * fontSize - 11))}>{props.tip}</tspan>}
+        </text>
     </g>
   )
 }

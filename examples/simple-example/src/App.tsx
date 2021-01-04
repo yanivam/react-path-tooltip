@@ -26,10 +26,10 @@ function App() {
           <circle cx={50} cy={320} r={10} fill="grey" ref={greyRef} />
           <circle cx={190} cy={190} r={40} fill="pink" ref={pinkRef} />
 
-          <PathTooltip svgRef={svgRef} pathRef={redRef} tip="This is the long Red!" />
+          <PathTooltip svgRef={svgRef} pathRef={redRef} tip="This is the long Red! I want to make this text really really long for the purposes of showing that you can create multiple lines of text now using and it cuts off the text based on the size of the screen." />
           <PathTooltip svgRef={svgRef} pathRef={greenRef} tip="Green" />
           <PathTooltip svgRef={svgRef} pathRef={blueRef} tip="BL" fontFamily={"system-ui"}/>
-          <PathTooltip svgRef={svgRef} pathRef={purpleRef} tip="Purple" fontSize={24}/>
+          <PathTooltip svgRef={svgRef} pathRef={purpleRef} tip="Purple. Since this font is bigger I also wanted to show how having a bigger font affects the multiple lines aspect of the code." fontSize={24}/>
           <PathTooltip svgRef={svgRef} pathRef={greyRef} tip="Grey" bgColor="#909090" textColor="blue"/>
           <PathTooltip svgRef={svgRef} pathRef={pinkRef} tip="Pink" textColor="pink"/>
 
