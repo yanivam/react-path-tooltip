@@ -3,11 +3,16 @@
 A simple yet beautiful react tooltip component for paths (i.e. SVGElements).
 The component detects the SVG and Path locations/sizes. The component also detects the display text width of the tooltip. Based on that information a calculation is done so that the rendering of the tooltip will be optimized and correctly oriented.  
 
-**Note:** In SVG, the rendering order is based on the document order. I.e. the first elements in the SVG document fragment getting "painted" first. Subsequent elements are painted on top of previously painted elements. To avoid issues with path elements rendered on top of tooltips, please place all tooltips below all content path elements. 
+**Notes:** 
+
+* When using the tooltip, make sure that the SVG elements are located in the code above the tooltip elements. The reason: In SVG, the rendering order is based on the document order. I.e. the first elements in the SVG document fragment getting "painted" first. Subsequent elements are painted on top of previously painted elements. Thus the order of elements is important to avoid issues with path elements rendered on top of tooltips.
+* If the tooltip text is too long, then the tooltip controller will automatically wrap the text across multiple lines.
 
 ## Demo
 
-Click [here](https://react-path-tooltip-simple-example.imfast.io) for live demo.
+![simple example](https://raw.githubusercontent.com/yanivam/react-svg-worldmap/master/react-path-tooltip.gif)
+
+See the code for this simple example [here](https://github.com/yanivam/react-path-tooltip/tree/master/examples/simple-example).
 
 ## Install 
 
@@ -50,19 +55,13 @@ The following parameters are passed to the tooltip component:
 
 | Prop       | Type   | Description |
 | ---------- | ------ | ----------- |
-| tip        | string | Mandatory. The text to be displayed inside the tooltip |
+| tip        | string | Mandatory. The text to be displayed inside the tooltip. Must include simple text. No new lines, or html decoration |
 | svgRef     | React.RefObject<SVGElement> | Mandatory. A React reference object to the SVG element |
-| pathRef    | React.RefObject<SVGSVGElement> | Mandatory. A React reference object to the path element bounded to the tooltip |
+| pathRef    | React.RefObject<SVGSVGElement> | Mandatory. A React reference object to the path element bounded to the tooltip. Must be a valid reference to a path element. There are a number of such types such as SVGRectElement, SVGCircleElement, etc |
 | bgColor    | string | Optional. Background color. Default: "black" |
 | textColor  | string | Optional. Text color. Default: "white" |
 | fontFamily | string | Optional. The font family. Default: san-serif |
 | fontSize   | number | Optional. The font size. Default 12| 
-
-**Notes:**
-
-* `tip` must include simple text. No new lines, or html decoration. 
-* `pathRef` must be a valid reference to a path element. There are a number of such types such as SVGRectElement, SVGCircleElement, etc. 
-* The SVG rendering should be such that all the tooltip elelments are at the bottom of the SVG definition, and specifically, after the path elements. Otherwise, there is a risk of paths overlaping tooltips. 
 
 ## License
 MIT
