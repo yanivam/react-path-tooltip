@@ -10,7 +10,7 @@ The component detects the SVG and Path locations/sizes. The component also detec
 
 ## Demo
 
-![simple example](https://raw.githubusercontent.com/yanivam/react-svg-worldmap/master/react-path-tooltip.gif)
+![simple example](https://raw.githubusercontent.com/yanivam/react-path-tooltip/master/react-path-tooltip.gif)
 
 See the code for this simple example [here](https://github.com/yanivam/react-path-tooltip/tree/master/examples/simple-example).
 
