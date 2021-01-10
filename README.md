@@ -2,8 +2,8 @@
 
 A simple react tooltip component for SVG paths, also known as SVGElements.
  
-The component detects the SVG, path locations/sizes, and text display size and calculates the optimal orientation and rendering approach. 
-
+The component detects the visual context, such as SVG size, path relative location and size, and the display size needed for the text, and calculates an optimal orientation and rendering approach. See the sample below for better explanation. 
+ 
 ## Demo
 
 ![simple example](https://raw.githubusercontent.com/yanivam/react-path-tooltip/master/simple-example.gif)
