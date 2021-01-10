@@ -1,7 +1,9 @@
 # CHANGELOG
 
-## 1.0.11
+## 1.0.12
 * README fix
+## 1.0.11
+* README fix and simple example package.json update
 ## 1.0.10
 * Added multi line capabilities
 ## 1.0.9
