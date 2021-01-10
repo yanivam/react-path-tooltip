@@ -1,5 +1,7 @@
 # CHANGELOG
 
+## 1.0.13
+* Bug fix: crashed when tooltip text was too long and had no spaces
 ## 1.0.12
 * README fix
 ## 1.0.11
