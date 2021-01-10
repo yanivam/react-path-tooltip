@@ -1,6 +1,6 @@
 # react-path-tooltip [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![npm version](https://img.shields.io/npm/v/react-path-tooltip.svg?style=flat)](https://www.npmjs.com/package/react-path-tooltip) [![Demo: Simple Example](https://img.shields.io/badge/demo-live-red.svg)](https://react-path-tooltip-simple-example.imfast.io)
 
-A simple react tooltip component for paths, also known as SVGElements.
+A simple react tooltip component for SVG paths, also known as SVGElements.
  
 The component detects the SVG, path locations/sizes, and text display size and calculates the optimal orientation and rendering approach. 
 
