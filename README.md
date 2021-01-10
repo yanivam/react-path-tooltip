@@ -3,11 +3,6 @@
 A simple yet beautiful react tooltip component for paths (i.e. SVGElements).
 The component detects the SVG and Path locations/sizes. The component also detects the display text width of the tooltip. Based on that information a calculation is done so that the rendering of the tooltip will be optimized and correctly oriented.  
 
-**Notes:** 
-
-* When using the tooltip, make sure that the SVG elements are located in the code above the tooltip elements. The reason: In SVG, the rendering order is based on the document order. I.e. the first elements in the SVG document fragment getting "painted" first. Subsequent elements are painted on top of previously painted elements. Thus the order of elements is important to avoid issues with path elements rendered on top of tooltips.
-* If the tooltip text is too long, then the tooltip controller will automatically wrap the text across multiple lines.
-
 ## Demo
 
 ![simple example](https://raw.githubusercontent.com/yanivam/react-svg-worldmap/master/react-path-tooltip.gif)
@@ -62,6 +57,11 @@ The following parameters are passed to the tooltip component:
 | textColor  | string | Optional. Text color. Default: "white" |
 | fontFamily | string | Optional. The font family. Default: san-serif |
 | fontSize   | number | Optional. The font size. Default 12| 
+
+## Notes
+
+* When using the tooltip, make sure that the SVG elements are located in the code above the tooltip elements. The reason: In SVG, the rendering order is based on the document order. I.e. the first elements in the SVG document fragment getting "painted" first. Subsequent elements are painted on top of previously painted elements. Thus the order of elements is important to avoid issues with path elements rendered on top of tooltips.
+* If the tooltip text is too long, then the tooltip controller will automatically wrap the text across multiple lines.
 
 ## License
 MIT
