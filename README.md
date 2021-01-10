@@ -1,4 +1,4 @@
-# react-path-tooltip [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![npm version](https://img.shields.io/npm/v/react-path-tooltip.svg?style=flat)](https://www.npmjs.com/package/react-path-tooltip) [![Demo: Simple Example](https://img.shields.io/badge/demo-live-red.svg)](https://react-path-tooltip-simple-example.imfast.io)
+# react-path-tooltip [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![npm version](https://img.shields.io/npm/v/react-path-tooltip.svg?style=flat)](https://www.npmjs.com/package/react-path-tooltip) [![Demo: Simple Example](https://github.com/yanivam/react-path-tooltip/tree/master/examples/simple-example)
 
 A simple react tooltip component for SVG paths, also known as SVGElements.
  
