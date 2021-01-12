@@ -1,13 +1,9 @@
-# react-path-tooltip [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![npm version](https://img.shields.io/npm/v/react-path-tooltip.svg?style=flat)](https://www.npmjs.com/package/react-path-tooltip) [![Demo: Simple Example](https://img.shields.io/badge/demo-live-red.svg)](https://react-path-tooltip-simple-example.imfast.io)
+# react-path-tooltip [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![npm version](https://img.shields.io/npm/v/react-path-tooltip.svg?style=flat)](https://www.npmjs.com/package/react-path-tooltip)
 
-A simple yet beautiful react tooltip component for paths (i.e. SVGElements).
-The component detects the SVG and Path locations/sizes. The component also detects the display text width of the tooltip. Based on that information a calculation is done so that the rendering of the tooltip will be optimized and correctly oriented.  
-
-**Notes:** 
-
-* When using the tooltip, make sure that the SVG elements are located in the code above the tooltip elements. The reason: In SVG, the rendering order is based on the document order. I.e. the first elements in the SVG document fragment getting "painted" first. Subsequent elements are painted on top of previously painted elements. Thus the order of elements is important to avoid issues with path elements rendered on top of tooltips.
-* If the tooltip text is too long, then the tooltip controller will automatically wrap the text across multiple lines.
-
+A simple react tooltip component for SVG paths, also known as SVGElements.
+ 
+The component detects the visual context, such as SVG size, path relative location and size, and the display size needed for the text, and calculates an optimal orientation and rendering approach. See the sample below for better explanation. 
+ 
 ## Demo
 
 ![simple example](https://raw.githubusercontent.com/yanivam/react-path-tooltip/master/simple-example.gif)
@@ -62,6 +58,11 @@ The following parameters are passed to the tooltip component:
 | textColor  | string | Optional. Text color. Default: "white" |
 | fontFamily | string | Optional. The font family. Default: san-serif |
 | fontSize   | number | Optional. The font size. Default 12| 
+
+## Notes
+
+* When using the tooltip, make sure that the SVG elements are located in the code above the tooltip elements. The reason: In SVG, the rendering order is based on the document order. I.e. the first elements in the SVG document fragment getting "painted" first. Subsequent elements are painted on top of previously painted elements. Thus the order of elements is important to avoid issues with path elements rendered on top of tooltips.
+* If the tooltip text is too long, then the tooltip controller will automatically wrap the text across multiple lines.
 
 ## License
 MIT
