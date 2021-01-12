@@ -69,7 +69,7 @@ export const PathTooltip: React.FC<IProps> = (props) => {
       }
       i++
     }
-    return [inputString.slice(0, temp), inputString.slice(temp + 1)]
+    return temp !== -1 ? [inputString.slice(0, temp), inputString.slice(temp + 1)] : [inputString.slice(0, threshold), inputString.slice(threshold + 1)]
   }
   const tips: string[] = []
   const startTip = findSpaceBeforeThreshold(props.tip, 35 - (1 * fontSize - 11))

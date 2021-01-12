@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.0.13
+* Bug fix: crashed when tooltip text was too long and had no spaces
+## 1.0.12
+* README fix
+## 1.0.11
+* README fix and simple example package.json update
 ## 1.0.10
 * Added multi line capabilities
 ## 1.0.9
