@@ -28,8 +28,8 @@ jobs:
     # Install 
     - name: Run install
       run: cd ./lib && npm install
-
-    # Run the build 
+    
+    # Build 
     - name: Run build
       run: cd ./lib && npm run build
 
@@ -37,7 +37,7 @@ jobs:
     - name: copy readme
       run: cd ./lib && cp ../README.md .
 
-    # Publish to npm
+    # Publish
     - name: publish
       run: cd ./lib && npm publish --access public
       env:
