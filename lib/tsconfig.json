@@ -1,14 +1,12 @@
 {
-  "include": [
-    "src"
-  ],
+  "include": ["src"],
   "compilerOptions": {
     "target": "es2015",
-    "module": "esnext",
+    "module": "commonjs",
     "outDir": "./dist",
     "allowSyntheticDefaultImports": true,
-    "importHelpers": true,
-    "declaration": true,
+    "importHelpers": true, 
+    "declaration": true, 
     "sourceMap": false,
     "rootDir": "./src",
     "strict": false,
@@ -24,19 +22,11 @@
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
     "baseUrl": "./",
+    "paths": {
+      "*": ["src/*", "node_modules/*"]
+    },
     "jsx": "react",
     "removeComments": true,
-    "esModuleInterop": false,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true
+    "esModuleInterop": true
   }
 }

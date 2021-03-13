@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, createRef } from 'react'
 
 interface IProps {
   tip: string,
@@ -11,7 +11,7 @@ interface IProps {
   textColor?: string
 }
 
-export const PathTooltip: React.FC<IProps> = (props) => {
+export const PathTooltip: React.FC<IProps> = (props : IProps) => {
 
   // set initial state
   const [hidden, setHidden] = useState(true)
@@ -22,7 +22,7 @@ export const PathTooltip: React.FC<IProps> = (props) => {
   const [textColor,] = useState(props["textColor"] || "white")
   const pathRef = props.pathRef
   const svgRef = props.svgRef
-  const textRef = React.createRef<SVGTextElement>()
+  const textRef = createRef<SVGTextElement>()
 
   // use effect to handle mouse over and mouse leave
   useEffect(() => {
@@ -60,8 +60,8 @@ export const PathTooltip: React.FC<IProps> = (props) => {
 
   // if tip text is too long then wrap the text in multi-lines 
   const findSpaceBeforeThreshold = (inputString: string, threshold: number) => {
-    var i = 0
-    var temp = -1
+    let i = 0
+    let temp = -1
     if (inputString.length <= threshold) { return ["", inputString] }
     while (i <= inputString.length && i <= threshold) {
       if (inputString[i] === " ") {
@@ -74,8 +74,8 @@ export const PathTooltip: React.FC<IProps> = (props) => {
   const tips: string[] = []
   const startTip = findSpaceBeforeThreshold(props.tip, 35 - (1 * fontSize - 11))
   tips.push(startTip[0])
-  var interimTip = startTip[1]
-  var leftover = startTip[1]
+  let interimTip = startTip[1]
+  let leftover = startTip[1]
   while (interimTip !== "") {
     const currTip = findSpaceBeforeThreshold(interimTip === leftover ? interimTip : leftover, 35 - (1 * fontSize - 11))
     interimTip = currTip[0]
