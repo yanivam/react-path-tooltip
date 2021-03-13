@@ -1,6 +1,6 @@
 {
     "name": "react-path-tooltip",
-    "version": "1.0.14",
+    "version": "1.0.15",
     "license": "MIT",
     "displayName": "React Path Tooltip",
     "description": "A tooltip for SVG paths in React",
@@ -12,28 +12,24 @@
     "engines": {
         "node": ">=10"
     },
+    "scripts": {
+        "prebuild": "rm -rf dist;eslint . --ext .tsx --fix",
+        "build": "tsc -p tsconfig.json",
+        "build:local": "npm run build&&npm pack"
+    },
     "peerDependencies": {
-        "react": ">=16.0.0",
+        "react": ">=16",
         "react-dom": ">=16.0.0"
     },
     "devDependencies": {
-        "@types/jest": "^25.1.4",
         "@types/react": "^16.9.34",
         "@types/react-dom": "^16.9.6",
-        "husky": "^4.2.3",
-        "tsdx": "^0.13.0",
+        "@typescript-eslint/eslint-plugin": "^4.17.0",
+        "@typescript-eslint/parser": "^4.17.0",
+        "eslint": "^7.22.0",
+        "eslint-plugin-react": "^7.22.0",
         "tslib": "^1.11.1",
         "typescript": "^3.8.3"
-    },
-    "scripts": {
-        "start": "tsdx watch",
-        "build": "tsdx build --format esm",
-        "test": "tsdx test --passWithNoTests",
-        "lint": "tsdx lint",
-        "prepare": "tsdx build --format esm"
-    },
-    "eslintConfig": {
-        "extends": "react-app"
     },
     "module": "dist/react-path-tooltip.esm.js",
     "authors": [
