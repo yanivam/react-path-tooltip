@@ -8,7 +8,8 @@ interface IProps {
   fontSize?: number,
   fontFamily?: string,
   bgColor?: string,
-  textColor?: string
+  textColor?: string,
+  rtl?: boolean
 }
 
 export const PathTooltip: React.FC<IProps> = (props : IProps) => {
@@ -20,6 +21,7 @@ export const PathTooltip: React.FC<IProps> = (props : IProps) => {
   const [fontFamily,] = useState(props["fontFamily"] || "sans-serif")
   const [bgColor,] = useState(props["bgColor"] || "black")
   const [textColor,] = useState(props["textColor"] || "white")
+  const [rtl,] = useState(props["rtl"] || false)
   const pathRef = props.pathRef
   const svgRef = props.svgRef
   const textRef = createRef<SVGTextElement>()
@@ -90,7 +92,7 @@ export const PathTooltip: React.FC<IProps> = (props : IProps) => {
       <polygon fill={bgColor} visibility={(hidden ? "hidden" : "visible")} points={points} />
       <text
         ref={textRef}
-        x={tooltipRect.x + 10}
+        x={rtl ? tooltipRect.x + tooltipRect.w - 10 : tooltipRect.x + 10}
         y={tooltipRect.y}
         cursor={"default"}
         fontFamily={fontFamily}
@@ -103,7 +105,7 @@ export const PathTooltip: React.FC<IProps> = (props : IProps) => {
             return (
               <tspan
                 key={tip}
-                x={tooltipRect.x + 10}
+                x={rtl ? tooltipRect.x + tooltipRect.w - 10 : tooltipRect.x + 10}
                 y={tooltipRect.y + (20 + (1 * fontSize - 11)) + (20 * (index))}>
                 {tip}
               </tspan>
@@ -111,7 +113,7 @@ export const PathTooltip: React.FC<IProps> = (props : IProps) => {
           })
           :
           <tspan
-            x={tooltipRect.x + 10}
+            x={rtl ? tooltipRect.x + tooltipRect.w - 10 : tooltipRect.x + 10}
             y={tooltipRect.y + (20 + (1 * fontSize - 11))}>{
               props.tip}
           </tspan>}

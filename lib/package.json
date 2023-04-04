@@ -1,6 +1,6 @@
 {
     "name": "react-path-tooltip",
-    "version": "1.0.17",
+    "version": "1.0.25",
     "license": "MIT",
     "displayName": "React Path Tooltip",
     "description": "A tooltip for SVG paths in React",
@@ -31,7 +31,7 @@
         "tslib": "^1.11.1",
         "typescript": "^3.8.3"
     },
-    "module": "dist/react-path-tooltip.esm.js",
+    "module": "dist/ReactPathTooltip.js",
     "authors": [
         "yanivam (https://github.com/yanivam)"
     ],
